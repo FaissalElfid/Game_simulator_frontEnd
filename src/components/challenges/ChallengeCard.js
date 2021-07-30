@@ -5,8 +5,9 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import { Button, Divider } from "@material-ui/core";
+
 import FlashOnIcon from "@material-ui/icons/FlashOn";
-import SettingsIcon from '@material-ui/icons/Settings';
+import SettingsIcon from "@material-ui/icons/Settings";
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     width: 151,
   },
   description: {
-    fontSize: "0.8rem",
+    fontSize: "0.9rem",
     paddingBottom: 15,
     maxWidth: 250,
     whiteSpace: "pre-wrap",
@@ -39,6 +40,18 @@ const useStyles = makeStyles((theme) => ({
   infos: {
     marginTop: 10,
   },
+  iconButton: {
+    borderStyle: "solid",
+    borderWidth: 1,
+    minWidth: 0,
+    padding: 1,
+    color: "#252525",
+    marginLeft: 9,
+
+  },
+  buttons:{
+    marginLeft: 150,
+  }
 }));
 
 export default function MediaControlCard() {
@@ -54,24 +67,30 @@ export default function MediaControlCard() {
       <div className={classes.details}>
         <CardContent className={classes.content}>
           <Typography
-            component="h5"
-            variant="h5"
+            component="h1"
+            variant="h1"
             className={classes.description}
           >
             Réalise 50 pronos Foot toutes compétitions confondues
           </Typography>
-          <Button
-            variant="contained"
-            color="default"
-            className={classes.button}
-            startIcon={<SettingsIcon fontSize="small"/>}
-          />
-          <Button
-            variant="contained"
-            color="default"
-            className={classes.button}
-            startIcon={<FlashOnIcon fontSize="small"/>}
-          />
+          <div className={classes.buttons}>
+            <Button
+              color="primary"
+              component="span"
+              className={classes.iconButton}
+            >
+              <SettingsIcon fontSize="small" />
+            </Button>
+            <Button
+              edge="start"
+              color="primary"
+              component="span"
+              className={classes.iconButton}
+            >
+              <FlashOnIcon fontSize="small" />
+            </Button>
+          </div>
+
           <div className={classes.infos}>
             <Typography
               variant="subtitle1"

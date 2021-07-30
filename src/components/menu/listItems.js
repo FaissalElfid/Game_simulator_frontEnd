@@ -1,10 +1,6 @@
 import React from 'react';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import BarChartIcon from '@material-ui/icons/BarChart';
-import CardMembershipIcon from '@material-ui/icons/CardMembership';
-import UnsubscribeIcon from '@material-ui/icons/Unsubscribe';
 import { withRouter } from "react-router-dom";
 import { Component } from 'react';
 import CardChallenge from '../challenges/ChallengeCard';
@@ -32,20 +28,14 @@ class MainListItems extends Component {
     return (
       <div>
     
-        <ListItem button onClick={this.redirectHome}>
+        <ListItem  onClick={this.redirectHome}>
             <CardChallenge />
           </ListItem>
         <ListItem button onClick={this.redirectFollow}>
-          <ListItemIcon>
-          <CardMembershipIcon style={{ color: "#2196F3"}} />
-          </ListItemIcon>
           <ListItemText primary="challenge 2" />
         </ListItem>
         <ListItem button onClick={this.redirectUnfollow}>
-          <ListItemIcon>
-            <UnsubscribeIcon style={{ color: "#F50057" }}/>
-          </ListItemIcon>
-          <ListItemText primary="Challenge 2" />
+          <ListItemText primary="Challenge 3" />
         </ListItem>
       </div>
     );
