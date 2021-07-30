@@ -7,6 +7,7 @@ import CardMembershipIcon from '@material-ui/icons/CardMembership';
 import UnsubscribeIcon from '@material-ui/icons/Unsubscribe';
 import { withRouter } from "react-router-dom";
 import { Component } from 'react';
+import CardChallenge from '../challenges/ChallengeCard';
 
 class MainListItems extends Component {
   constuctor() {
@@ -32,10 +33,7 @@ class MainListItems extends Component {
       <div>
     
         <ListItem button onClick={this.redirectHome}>
-            <ListItemIcon>
-            <BarChartIcon style={{ color: "#4CAF50" }}/>
-            </ListItemIcon>
-            <ListItemText primary="challenge 1" />
+            <CardChallenge />
           </ListItem>
         <ListItem button onClick={this.redirectFollow}>
           <ListItemIcon>

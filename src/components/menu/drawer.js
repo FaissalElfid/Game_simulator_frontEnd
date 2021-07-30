@@ -75,7 +75,7 @@ export default function Dashboard() {
       <AppBar position="absolute" className={clsx(classes.appBarShift)}>
         <Toolbar className={classes.toolbar}>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-           The Game Tester
+           The Game Simulator
           </Typography>
         </Toolbar>
       </AppBar>
