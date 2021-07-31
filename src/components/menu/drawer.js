@@ -3,15 +3,11 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import MainListItems from './listItems';
 import SearchButton from './searchButton';
-import CachedIcon from '@material-ui/icons/Cached';
-import { Button } from '@material-ui/core';
+import HearderBar from '../appBar/headerBar';
 const drawerWidth = 375;
 
 const useStyles = makeStyles((theme) => ({
@@ -44,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
     },
   drawerPaper: {
     position: 'relative',
+    backgroundColor: '#F9FAFC',
     whiteSpace: 'nowrap',
     width: drawerWidth,
     transition: theme.transitions.create('width', {
@@ -82,21 +79,7 @@ export default function Dashboard() {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar position="absolute" className={clsx(classes.appBarShift)}>
-        <Toolbar className={classes.toolbar}>
-        <Button
-              edge="start"
-              color="primary"
-              component="span"
-              className={classes.iconButton}
-            >
-              <CachedIcon fontSize="small" />
-            </Button>
-          <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-           The Game Simulator
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      <HearderBar />
       <Drawer
         variant="permanent"
         classes={{

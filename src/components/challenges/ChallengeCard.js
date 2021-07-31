@@ -20,13 +20,17 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flex: "1 0 auto",
     fontSize: 12,
+    padding: 8,
+    "&:last-child": {
+      paddingBottom: 0
+    }
   },
   cover: {
     width: 151,
   },
   description: {
+    fontWeight: 'bold',
     fontSize: "0.9rem",
-    paddingBottom: 15,
     maxWidth: 250,
     whiteSpace: "pre-wrap",
     overflowWrap: "break-word",
@@ -39,6 +43,8 @@ const useStyles = makeStyles((theme) => ({
   },
   infos: {
     marginTop: 10,
+    marginBottom: 1,
+    paddingBottom: 0,
   },
   iconButton: {
     borderStyle: "solid",
@@ -54,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function MediaControlCard() {
+export default function ChallengeBar() {
   const classes = useStyles();
 
   return (
