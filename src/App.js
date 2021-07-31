@@ -9,6 +9,7 @@ import Copyright from "./components/copyright";
 import Paper from "@material-ui/core/Paper";
 import Drawer from "./components/menu/drawer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import SportsNav from "./components/sports/sportsNav";
 
 const useStyles = makeStyles((theme) => ({
   appBarSpacer: theme.mixins.toolbar,
@@ -42,6 +43,8 @@ function App() {
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
           <Container maxWidth="lg" className={classes.container}>
+          <SportsNav />
+
             {/* Chart */}
             <Paper className={fixedHeightPaper}>
               <Switch>
