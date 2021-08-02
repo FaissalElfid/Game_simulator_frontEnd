@@ -29,13 +29,13 @@ class MainListItems extends Component {
       <div>
     
         <ListItem  onClick={this.redirectHome}>
-            <CardChallenge />
+            <CardChallenge title="Réalise 50 pronos Foot toutes compétitions confondues" recurrent={10} coins={50}/>
           </ListItem>
         <ListItem button onClick={this.redirectFollow}>
-          <ListItemText primary="challenge 2" />
+        <CardChallenge title="Valide 25 pronos Foote toutes compétitions confondues" recurrent={25} coins={50}/>
         </ListItem>
         <ListItem button onClick={this.redirectUnfollow}>
-          <ListItemText primary="Challenge 3" />
+        <CardChallenge title="Valide une cote comprise entre 3 et 3,99" reunlockable={2000} coins={50}/>
         </ListItem>
       </div>
     );

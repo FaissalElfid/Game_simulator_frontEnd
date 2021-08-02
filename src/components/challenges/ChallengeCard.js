@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function ChallengeBar() {
+export default function ChallengeBar(props) {
   const classes = useStyles();
 
   return (
@@ -77,7 +77,7 @@ export default function ChallengeBar() {
             variant="h1"
             className={classes.description}
           >
-            Réalise 50 pronos Foot toutes compétitions confondues
+            {props.title}
           </Typography>
           <div className={classes.buttons}>
             <Button
@@ -103,7 +103,9 @@ export default function ChallengeBar() {
               color="textSecondary"
               className={classes.recurrent}
             >
-              recurrent: 50
+              
+              {props.recurrent && <div> recurrent: {props.recurrent}</div>}
+              {props.reunlockable && <div> re-unlockable: {props.reunlockable}</div>}
             </Typography>
             <Divider />
             <Typography
@@ -111,7 +113,7 @@ export default function ChallengeBar() {
               color="textSecondary"
               className={classes.recurrent}
             >
-              coins: 50
+              coins: {props.coins}
             </Typography>
           </div>
         </CardContent>

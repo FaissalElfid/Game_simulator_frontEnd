@@ -3,23 +3,14 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import ChallengesCarousel from "../components/layout/carousel";
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(1),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.success.main,
-  },
-  form: {
-    width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
+    justifyContent: 'center',
   },
 }));
 
@@ -28,10 +19,8 @@ export default function SignUp() {
   return (
     <Container component="main">
       <CssBaseline />
-      <Grid container spacing={2} className={classes.paper}>
-        <Grid item xs={12} sm={6}>
-            HII
-      </Grid>
+      <Grid container className={classes.paper}>
+        <ChallengesCarousel />
       </Grid>
 
     </Container>

@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
       padding: 16,
       backgroundColor: "#383E45",
       "&:hover": {
-        backgroundColor: "#f00",
+        backgroundColor: "#5B5B5D",
       },
       "&:active": {
         backgroundColor: "#215EFF",

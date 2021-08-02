@@ -6,6 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import CachedIcon from '@material-ui/icons/Cached';
 import { Button } from '@material-ui/core';
+import SearchUserButton from './searchUserButton';
 const drawerWidth = 375;
 
 const useStyles = makeStyles((theme) => ({
@@ -56,6 +57,7 @@ export default function HearderBar() {
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
            The Game Simulator
           </Typography>
+          <SearchUserButton />
         </Toolbar>
       </AppBar>
     </div>
