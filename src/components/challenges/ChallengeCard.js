@@ -67,8 +67,8 @@ export default function ChallengeBar(props) {
     <Card className={classes.root}>
       <CardMedia
         className={classes.cover}
-        image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPKF1fRXtW_h1RTN9w4BLnc02M7fHAkS2Dkw&usqp=CAU"
-        title="Live from space album cover"
+        image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2ux1CxW8P6TqImLOplK1BGg_7nJUm_tzGfA&usqp=CAU"
+        title="Game challenge"
       />
       <div className={classes.details}>
         <CardContent className={classes.content}>

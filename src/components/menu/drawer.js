@@ -8,6 +8,7 @@ import Divider from '@material-ui/core/Divider';
 import MainListItems from './listItems';
 import SearchButton from './searchButton';
 import HearderBar from '../appBar/headerBar';
+import { withRouter } from 'react-router-dom';
 const drawerWidth = 375;
 
 const useStyles = makeStyles((theme) => ({
@@ -74,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Dashboard() {
+function Drawerr(props) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -98,3 +99,4 @@ export default function Dashboard() {
     </div>
   );
 }
+export default withRouter(Drawerr);

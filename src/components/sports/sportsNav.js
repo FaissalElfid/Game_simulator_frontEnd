@@ -1,6 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Chip } from "@material-ui/core";
+import { BrowserRouter as Router, Link, withRouter  } from "react-router-dom";
+import clsx from 'clsx';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,20 +17,19 @@ const useStyles = makeStyles((theme) => ({
       "&:hover": {
         backgroundColor: "#5B5B5D",
       },
-      "&:active": {
-        backgroundColor: "#215EFF",
+      "&:focus": {
+        backgroundColor: "#2F5EF9",
       }
   },
-  '&:hover': {
-    backgroundColor: "#f00",
-  }
+  chipActive:{
+    backgroundColor: "#2F5EF9",
+},
 }));
 
-export default function SportsNav() {
+function SportsNav(props) {
   const classes = useStyles();
-  const data = ["Général", "Social", "Foot", "Tennis", "Basket",  "Rugby","Hockey"];
-const sports = data.map((sport) =>
-<Chip label={sport} color="primary" component="a" href="#" clickable className={classes.chipNav}/>
+const sports = props.sports.map((sport) =>
+<Chip label={sport} color="primary" component={Link} to={"/"+sport}  clickable className={clsx({[classes.chipActive]: sport === props.match.params.sport}, classes.chipNav)}/>
 );
   return (
     <div className={classes.root}>
@@ -36,3 +37,4 @@ const sports = data.map((sport) =>
     </div>
   );
 }
+export default withRouter(SportsNav)

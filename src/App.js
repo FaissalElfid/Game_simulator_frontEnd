@@ -1,61 +1,54 @@
 import "./App.css";
-import testFollow from "./screens/testFollow";
-import testUnfollow from "./screens/testUnfollow";
-import test1 from "./screens/test1";
-import clsx from "clsx";
-import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-import Copyright from "./components/copyright";
-import Paper from "@material-ui/core/Paper";
-import Drawer from "./components/menu/drawer";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import SportsNav from "./components/sports/sportsNav";
+import aboutus from "./screens/aboutus";
+import home from "./screens/home";
+import Sport from "./screens/sport";
+import NotFoundPage from "./screens/404";
 
-const useStyles = makeStyles((theme) => ({
-  appBarSpacer: theme.mixins.toolbar,
-  content: {
-    flexGrow: 1,
-    height: "100vh",
-    overflow: "auto",
-    backgroundColor: "#282C34"
-  },
-  root: {
-    display: "flex",
-  },
-  fixedHeight: {
-    backgroundColor: "#181B1F",
-    paddingBottom: "50px",
-    color: "#fafafa"
-  },
-  copyright: {
-    paddingTop: "70px",
-  },
-}));
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+import SportsNav from "./components/sports/sportsNav";
+import MainLayout from "./components/layout/layout";
+
+// const useStyles = makeStyles((theme) => ({
+// }));
 
 function App() {
-  const classes = useStyles();
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+  const sportsData = [
+    "Général",
+    "Social",
+    "Foot",
+    "Tennis",
+    "Basket",
+    "Rugby",
+    "Hockey",
+  ];
 
   return (
-    <div className={classes.root}>
+    <div>
       <Router>
-        <Drawer />
-        <main className={classes.content}>
-          <div className={classes.appBarSpacer} />
-          <Container maxWidth="lg" className={classes.container}>
-          <SportsNav />
-
-            {/* Chart */}
-            <Paper className={fixedHeightPaper}>
-              <Switch>
-                <Route path="/" exact component={test1} />
-                <Route path="/follow" exact component={testFollow} />
-                <Route path="/unfollow" exact component={testUnfollow} />
-              </Switch>
-            </Paper>
-            <Copyright />
-          </Container>
-        </main>
+        <Switch>
+          <Route path="/aboutus" exact component={aboutus} />
+          <Route path="/home" exact component={home} />
+          <Route path="/404" component={NotFoundPage} />
+          <Route
+            exact
+            path="/:sport"
+            render={({ match }) => {
+              if (sportsData.includes(match.params.sport)) {
+                return (
+                  <MainLayout>
+                    <SportsNav sports={sportsData} />
+                    <Sport />
+                  </MainLayout>
+                );
+              } else {
+                return <Redirect to="/404" />;
+              }
+            }}
+          />
+          <Redirect from="/" to="/Général" />
+          <Redirect to="/404" />
+        </Switch>
       </Router>
     </div>
   );
