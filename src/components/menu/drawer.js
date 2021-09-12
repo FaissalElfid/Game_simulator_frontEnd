@@ -27,18 +27,6 @@ const useStyles = makeStyles((theme) => ({
     padding: '0 20px',
     ...theme.mixins.toolbar,
   },
-  appBarShift: {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  title: {
-    flexGrow: 1,
-    textDecoration:""
-    },
   drawerPaper: {
     position: 'relative',
     backgroundColor: '#F9FAFC',
@@ -48,30 +36,6 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
-  },
-  appBarSpacer: theme.mixins.toolbar,
-  content: {
-    flexGrow: 1,
-    height: '100vh',
-    overflow: 'auto',
-  },
-  container: {
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
-  },
-  paper: {
-    padding: theme.spacing(2),
-    display: 'flex',
-    overflow: 'auto',
-    flexDirection: 'column',
-  },
-  iconButton: {
-    minWidth: 0,
-    padding: 5,
-    backgroundColor: "#24282B",
-    color: '#AFB3B4',
-    marginLeft: 9,
-
   },
 }));
 

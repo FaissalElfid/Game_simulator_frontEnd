@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import CachedIcon from '@material-ui/icons/Cached';
 import { Button } from '@material-ui/core';
 import SearchUserButton from './searchUserButton';
+import UserProfileMenu from './UserProfileMenu';
 const drawerWidth = 375;
 
 const useStyles = makeStyles((theme) => ({
@@ -27,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
     }),
   },
   title: {
+    marginLeft: 50,
     flexGrow: 1,
     textDecoration:""
     },
@@ -58,6 +60,7 @@ export default function HearderBar() {
            The Game Simulator
           </Typography>
           <SearchUserButton />
+          <UserProfileMenu />
         </Toolbar>
       </AppBar>
     </div>

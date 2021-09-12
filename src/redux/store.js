@@ -7,16 +7,14 @@ import logger from 'redux-logger';
 
 
 //!REDUCERS
-import { test1Reducer } from './reducers/test1';
-import { testFollowReducer } from './reducers/testFollow';
-import { testUnfollowReducer } from './reducers/testUnfollow';
+import { loginReducer } from './reducers/login';
+import sharedReducer from './reducers/shared';
 
 
 //!REDUCER
 const reducer = combineReducers({
-    test1 : test1Reducer,
-    testFollow : testFollowReducer,
-    testUnfollow : testUnfollowReducer,
+    login : loginReducer,
+    shared : sharedReducer,
 })
 
 //!APP INITIAL STATE

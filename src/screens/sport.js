@@ -7,6 +7,8 @@ import ChallengesCarousel from "../components/layout/carousel";
 import { withRouter } from "react-router-dom";
 import clsx from "clsx";
 import Paper from "@material-ui/core/Paper";
+import ScreenTransition from "../components/library/ScreenTransition";
+import SuspenseComponent from "../components/library/SuspenseComponent";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -43,4 +45,4 @@ function Sport(props) {
   );
 }
 
-export default  withRouter(Sport);
+export default  SuspenseComponent(ScreenTransition(withRouter(Sport)));

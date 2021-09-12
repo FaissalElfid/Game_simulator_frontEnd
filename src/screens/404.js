@@ -4,6 +4,8 @@ import Paper from '@material-ui/core/Paper'
 import React from 'react'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
+import SuspenseComponent from '../components/library/SuspenseComponent'
+import ScreenTransition from '../components/library/ScreenTransition'
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -52,5 +54,5 @@ const PageNotFound = () => {
     </div>
   )
 }
+export default SuspenseComponent(ScreenTransition(PageNotFound));
 
-export default PageNotFound

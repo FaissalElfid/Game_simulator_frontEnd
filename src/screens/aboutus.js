@@ -3,6 +3,8 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
+import SuspenseComponent from "../components/library/SuspenseComponent";
+import ScreenTransition from "../components/library/ScreenTransition";
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(3),
@@ -12,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
+function SignUp() {
   const classes = useStyles();
 
 
@@ -29,3 +31,4 @@ export default function SignUp() {
     </Container>
   );
 }
+export default SuspenseComponent(ScreenTransition(SignUp));
