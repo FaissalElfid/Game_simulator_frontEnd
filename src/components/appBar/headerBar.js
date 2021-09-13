@@ -56,7 +56,7 @@ export default function HearderBar() {
             >
               <CachedIcon fontSize="small" />
             </Button>
-          <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
+          <Typography component="h1" color="inherit" noWrap className={classes.title}>
            The Game Simulator
           </Typography>
           <SearchUserButton />

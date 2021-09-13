@@ -13,7 +13,7 @@ import {
 const initialState = {
   loading: false,
   connected: true,
-  user: {},
+  user: null,
   error: "",
 };
 

@@ -67,9 +67,11 @@ export const getUser = () => async (dispatch) => {
       withCredentials: true,
     })
     .then((response) => {
+
       dispatch({ type: GET_USER_REQUEST_SUCCESS, payload: response.data });
     })
     .catch((error) => {
+      logout()
       dispatch({
         type: GET_USER_REQUEST_FAILED,
         payload: error.response.data.message,

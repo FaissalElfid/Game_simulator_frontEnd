@@ -3,7 +3,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import Form from '../components/login/form';
+import Form from '../components/register/form';
 import SuspenseComponent from "../components/library/SuspenseComponent";
 import ScreenTransition from "../components/library/ScreenTransition";
 const useStyles = makeStyles((theme) => ({
@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function Login() {
+function Register() {
   const classes = useStyles();
   return (
     <Container component="main">
@@ -29,4 +29,4 @@ function Login() {
     </Container>
   );
 }
-export default SuspenseComponent(ScreenTransition(Login));
+export default SuspenseComponent(ScreenTransition(Register));

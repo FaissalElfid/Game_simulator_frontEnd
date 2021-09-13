@@ -1,73 +1,44 @@
-import  { lazy , Suspense, useEffect } from 'react';
-import { BrowserRouter as Switch, Route, useLocation } from "react-router-dom";
+import "../App.css";
+import { lazy, Suspense } from "react";
+
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Redirect } from "react-router-dom";
-import SportsNav from "../components/sports/sportsNav";
-import MainLayout from "../components/layout/layout";
-import BackdropLoader from '../components/library/backdrop';
-import { AnimatePresence } from 'framer-motion';
-import { setCurrentUrl , updateUrlState  } from '../redux/actions/shared';
-import { useDispatch } from 'react-redux';
-import { BrowserRouter as withRouter  } from "react-router-dom";
-import { Router } from '@material-ui/icons';
+import { AnimatePresence } from "framer-motion";
+import BackdropLoader from "../components/library/backdrop";
+import ProtectedRouteAuth from "../components/library/ProtectedRoute";
+import Simulator from "../screens/simulator";
 
-const home = lazy(() => import('../screens/home') );
-const aboutus = lazy(() => import('../screens/aboutus') );
-const Sport = lazy(() => import('../screens/sport') );
-const Login = lazy(() => import('../screens/login') );
-const NotFoundPage = lazy(() => import('../screens/404') );
 
+const home = lazy(() => import("../screens/home"));
+const aboutus = lazy(() => import("../screens/aboutus"));
+const Login = lazy(() => import("../screens/login"));
+const Register = lazy(() => import("../screens/register"));
+const adminDashboard = lazy(() => import("../screens/admin/Dashboard"));
+const NotFoundPage = lazy(() => import("../screens/404"));
 function Routes() {
-  const sportsData = [
-    "Général",
-    "Social",
-    "Foot",
-    "Tennis",
-    "Basket",
-    "Rugby",
-    "Hockey",
-  ];
-  const dispatch = useDispatch();
-  const location = useLocation();
-  console.log(location)
 
-  useEffect(() => {
-    if(location?.state){
-      dispatch(updateUrlState({...location?.state}));
-    }
-    dispatch(setCurrentUrl(location.pathname));
-  }, [location.pathname , dispatch , location.state]);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  } , [location.pathname]);
   return (
     <Router>
-    <Suspense fallback = { <BackdropLoader /> } >
-        <AnimatePresence exitBeforeEnter initial = {false} >
-            <Switch location = {location}  key={location.pathname} >
-                <Route exact  path="/aboutus" component={aboutus} />
-                <Route exact path="/home"  component={home} />
-                <Route exact path="/login"  component={Login} />
-                <Route
-                    exact
-                    path="/:sport"
-                    render={({ match }) => {
-                    if (sportsData.includes(match.params.sport)) {
-                        return (
-                        
-                            <Sport sports={sportsData} />
-                        );
-                    } else {
-                        return <Redirect to="/404" />;
-                    }
-                    }}
-                />
-                <Route path="/404" component={NotFoundPage} />
-                <Redirect from="/" to="/Général" />
-                {/* <Redirect to="/404" /> */}
-            </Switch>
+      <Suspense fallback={<BackdropLoader />}>
+        <AnimatePresence exitBeforeEnter initial={false}>
+          <Switch >
+            <Route path="/login" exact component={Login} />
+            <Route path="/register" exact component={Register} />
+            <Route path="/aboutus" exact component={aboutus} />
+            <Route path="/admin" exact component={adminDashboard} />
+            <ProtectedRouteAuth path="/home" exact component={home} />
+            <Route path="/404" component={NotFoundPage} />
+            <ProtectedRouteAuth
+              exact
+              path="/:sport"
+              component={Simulator}
+            />
+            <Redirect from="/" to="/Général" />
+            <Redirect to="/404" />
+          </Switch>
         </AnimatePresence>
-    </Suspense>
+      </Suspense>
     </Router>
   );
 }

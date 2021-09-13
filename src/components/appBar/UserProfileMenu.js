@@ -19,10 +19,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function UserProfileMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const { loading } = useSelector((state) => state.login);
+  const { loading, user } = useSelector((state) => state.login);
 
   const dispatch = useDispatch();
   const handleClick = (event) => {
+    console.log(user.name)
     setAnchorEl(event.currentTarget);
   };
   const handleLogout = () => {
@@ -38,7 +39,7 @@ export default function UserProfileMenu() {
         variant="outlined"
         size="medium"
         icon={<FaceIcon />}
-        label="Faissal"
+        label={user ? user.name.split(' ')[0] : "Unkown"}
         className={classes.chip}
         onClick={handleClick}
       />

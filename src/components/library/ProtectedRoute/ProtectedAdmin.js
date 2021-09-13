@@ -4,22 +4,28 @@ import { Route, Redirect, useLocation } from "react-router-dom";
 import { getUser } from "../../../redux/actions/login";
 import { setCurrentUrl } from "../../../redux/actions/shared";
 
-export const ProtectedRouteAuth = ({ component: Component, ...rest }) => {
+export const ProtectedRouteAdmin = ({ component: Component, ...rest }) => {
   const dispatch = useDispatch();
-  const { connected } = useSelector((state) => state.login);
+  const { user, connected } = useSelector((state) => state.login);
   const location = useLocation();
   useEffect(() => {
       dispatch(getUser());
       dispatch(setCurrentUrl(location.pathname));
-  }, [dispatch, connected, location.pathname]);
+  }, [dispatch, location.pathname]);
   return (
+    connected ? 
     <Route
       {...rest}
       render={(props) => 
-        connected ? <Component {...props} /> : <Redirect to='/Login' />
+        user && user.isAdmin ? <Component {...props} /> : <Redirect to='/' />
+      }
+    /> : 
+    <Route
+      {...rest}
+      render={() => <Redirect to='/Login' />
       }
     />
   );
 };
 
-export default ProtectedRouteAuth;
+export default ProtectedRouteAdmin;
