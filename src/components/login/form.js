@@ -52,7 +52,7 @@ export default function Form() {
   const history = useHistory();
   const classes = useStyles();
   const { handleSubmit, control } = useForm();
-  const { loading, error, connected } = useSelector((state) => state.login);
+  const { loading, error, connected, isAdmin } = useSelector((state) => state.login);
   const { url } = useSelector((state) => state.shared);
    useEffect(() => {
      dispatch(registeredFalse())
@@ -61,7 +61,8 @@ export default function Form() {
   const onSubmit = (data) => {
       dispatch(login(data.email, data.password));
   };
-    if(connected && !loading) history.push(url);
+    if(connected && !loading && !isAdmin) {history.push(url);}
+    else if(connected && !loading && isAdmin){ history.push("/admin"); }
 
   return (
     <div>

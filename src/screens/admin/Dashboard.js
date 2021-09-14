@@ -7,6 +7,8 @@ import TotalCustomers from '../../components/dashboard/TotalCustomers';
 import TotalProfit from '../../components/dashboard/TotalProfit';
 import TrafficByDevice from '../../components/dashboard/TrafficByDevice';
 import DashboardLayout from '../../components/layout/admin';
+import SuspenseComponent from '../../components/library/SuspenseComponent';
+import ScreenTransition from '../../components/library/ScreenTransition';
 
 const Dashboard = () => (
   <DashboardLayout>
@@ -85,4 +87,4 @@ const Dashboard = () => (
   </DashboardLayout>
 );
 
-export default Dashboard;
+export default SuspenseComponent(ScreenTransition(Dashboard));

@@ -33,7 +33,7 @@ const Budget = (props) => (
             color="textPrimary"
             variant="h3"
           >
-            $24,000
+            $0
           </Typography>
         </Grid>
         <Grid item>
@@ -63,7 +63,7 @@ const Budget = (props) => (
           }}
           variant="body2"
         >
-          12%
+          0%
         </Typography>
         <Typography
           color="textSecondary"

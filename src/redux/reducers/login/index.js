@@ -14,13 +14,14 @@ const initialState = {
   loading: false,
   connected: true,
   user: null,
+  isAdmin: false,
   error: "",
 };
 
 export const loginReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_REQUEST_SUCCESS:
-      return { ...state, connected: true, loading: false, error: "" };
+      return { ...state, connected: true, loading: false,isAdmin: action.payload.isAdmin ,error: "" };
     case LOGIN_REQUEST_LOADING:
       return { ...state, connected: false, loading: true };
     case LOGIN_REQUEST_FAILED:
@@ -31,7 +32,7 @@ export const loginReducer = (state = initialState, action) => {
         error: action.payload,
       };
     case GET_USER_REQUEST_SUCCESS:
-      return { ...state, connected: true, user: action.payload, loading: false, error: "" };
+      return { ...state, connected: true, user: action.payload, isAdmin:action.payload.isAdmin, loading: false, error: "" };
     case GET_USER_REQUEST_LOADING:
       return { ...state, connected: true,  loading: true };
     case GET_USER_REQUEST_FAILED:

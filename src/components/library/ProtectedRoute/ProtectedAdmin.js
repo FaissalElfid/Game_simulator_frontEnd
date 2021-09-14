@@ -6,7 +6,7 @@ import { setCurrentUrl } from "../../../redux/actions/shared";
 
 export const ProtectedRouteAdmin = ({ component: Component, ...rest }) => {
   const dispatch = useDispatch();
-  const { user, connected } = useSelector((state) => state.login);
+  const { isAdmin, connected } = useSelector((state) => state.login);
   const location = useLocation();
   useEffect(() => {
       dispatch(getUser());
@@ -17,7 +17,7 @@ export const ProtectedRouteAdmin = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={(props) => 
-        user && user.isAdmin ? <Component {...props} /> : <Redirect to='/' />
+        isAdmin ? <Component {...props} /> : <Redirect to='/404' />
       }
     /> : 
     <Route

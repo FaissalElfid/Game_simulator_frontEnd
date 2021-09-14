@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { styled } from '@material-ui/core/styles';
-import DashboardNavbar from './DashboardNavbar';
-import DashboardSidebar from './DashboardSidebar';
+import Drawer from '../../menu_admin/drawer';
+import { makeStyles } from '@material-ui/styles';
 
 const DashboardLayoutRoot = styled('div')(
   ({ theme }) => ({
@@ -12,48 +12,28 @@ const DashboardLayoutRoot = styled('div')(
     width: '100%'
   })
 );
-
-const DashboardLayoutWrapper = styled('div')(
-  ({ theme }) => ({
+const useStyles = makeStyles((theme) => ({
+  typogra: {
+    color: '#fafafa',
+  },
+  main : {
+    paddingTop: 64,
     display: 'flex',
     flex: '1 1 auto',
-    overflow: 'hidden',
-    paddingTop: 64,
-    [theme.breakpoints.up('lg')]: {
-      paddingLeft: 256
-    }
-  })
-);
-
-const DashboardLayoutContainer = styled('div')({
-  display: 'flex',
-  flex: '1 1 auto',
-  overflow: 'hidden'
-});
-
-const DashboardLayoutContent = styled('div')({
-  flex: '1 1 auto',
-  height: '100%',
-  overflow: 'auto'
-});
+    overflow: 'auto',
+    height: '100%',
+    // overflow: 'hidden',
+  }
+}))
 
 const DashboardLayout = (props) => {
-  const [isMobileNavOpen, setMobileNavOpen] = useState(false);
-
+  const classes = useStyles();
   return (
     <DashboardLayoutRoot>
-      <DashboardNavbar onMobileNavOpen={() => setMobileNavOpen(true)} />
-      <DashboardSidebar
-        onMobileClose={() => setMobileNavOpen(false)}
-        openMobile={isMobileNavOpen}
-      />
-      <DashboardLayoutWrapper>
-        <DashboardLayoutContainer>
-          <DashboardLayoutContent>
+      <Drawer />
+      <div className={classes.main}>
             {props.children}
-          </DashboardLayoutContent>
-        </DashboardLayoutContainer>
-      </DashboardLayoutWrapper>
+      </div>
     </DashboardLayoutRoot>
   );
 };
