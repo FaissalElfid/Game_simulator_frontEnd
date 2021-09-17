@@ -15,6 +15,7 @@ import ErrorCollapse from "../library/errorCollapse";
 import FormText from "../library/input/Text";
 import FormPassword from "../library/input/Password";
 import { registeredFalse } from "../../redux/actions/register";
+import { ADMIN_ROUTES } from "../../utils/admin_routes";
 const useStyles = makeStyles((theme) => ({
   paper: {
     display: "flex",
@@ -56,14 +57,17 @@ export default function Form() {
   const { url } = useSelector((state) => state.shared);
    useEffect(() => {
      dispatch(registeredFalse())
-   }, [])
+   }, [dispatch])
 
   const onSubmit = (data) => {
       dispatch(login(data.email, data.password));
   };
-    if(connected && !loading && !isAdmin) {history.push(url);}
-    else if(connected && !loading && isAdmin){ history.push("/admin"); }
-
+    if(connected && !loading) {
+      if(ADMIN_ROUTES.includes(url) && !isAdmin){
+        history.push('/404');
+      }
+        history.push(url);
+    }
   return (
     <div>
       <div className={classes.paper}>
@@ -82,6 +86,7 @@ export default function Form() {
         </Typography>
         <form
           className={classes.form}
+          autoComplete="off"
           onSubmit={handleSubmit(onSubmit)}
           noValidate
         >

@@ -3,16 +3,16 @@ import TextField from "@material-ui/core/TextField";
 import { Controller } from "react-hook-form";
 
 export default function FormPassword(props) {
-var {control, name} = props
-var label = name.charAt(0).toUpperCase() + name.slice(1);
-
+var {control, name, defaultValue, label} = props
+// var labelFromName = name.charAt(0).toUpperCase() + name.slice(1);
+if(!label) label = name.charAt(0).toUpperCase() + name.slice(1); 
   return (
     <div>
         <Controller
                 name={name}
                 control={control}
-                rules={{ required: `Your ${name} is required` }}
-                defaultValue=""
+                rules={{ required: `Your ${label} is required` }}
+                defaultValue={defaultValue ? defaultValue : ""}
                 render={({
                   field: { onChange, value },
                   fieldState: { error },

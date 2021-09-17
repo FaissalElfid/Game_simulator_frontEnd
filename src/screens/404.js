@@ -4,8 +4,6 @@ import {
   Container,
   Typography
 } from '@material-ui/core';
-import SuspenseComponent from '../components/library/SuspenseComponent';
-import ScreenTransition from '../components/library/ScreenTransition';
 
 const NotFound = () => (
   <>
@@ -54,4 +52,4 @@ const NotFound = () => (
   </>
 );
 
-export default SuspenseComponent(ScreenTransition(NotFound));
+export default NotFound;

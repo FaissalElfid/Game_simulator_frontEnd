@@ -1,0 +1,1 @@
+export const ADMIN_ROUTES = ["/admin/users", "/admin/challengeType","/admin", "/admin/challenge","/admin/settings","/admin/account"]

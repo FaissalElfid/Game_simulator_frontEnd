@@ -4,6 +4,9 @@ import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
 import ListAltIcon from '@material-ui/icons/ListAlt';
 import { Link as RouterLink } from 'react-router-dom';
 import DashboardIcon from '@material-ui/icons/Dashboard';
+import SportsBaseballIcon from '@material-ui/icons/SportsBaseball';
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
+import SettingsIcon from '@material-ui/icons/Settings';
 import {
   Avatar,
   Box,
@@ -12,7 +15,8 @@ import {
   Typography
 } from '@material-ui/core';
 import NavItem from './navItem';
-const user = {
+import { useSelector } from 'react-redux';
+const userStatic = {
   avatar: '/static/images/faissal.png',
   jobTitle: 'Software Engineer',
   name: 'Faissal EL FID'
@@ -29,11 +33,28 @@ const items = [
     title: 'Users'
   },
   {
-    href: '/admin/#',
+    href: '/admin/challengeType',
+    icon: SportsBaseballIcon,
+    title: 'Challenges Type'
+  },
+  {
+    href: '/admin/challenge',
     icon: ListAltIcon,
     title: 'Challenges'
-  }]
+  }
+  ,{
+    href: '/admin/account',
+    icon: AccountBoxIcon,
+    title: 'My Account'
+  },
+  {
+    href: '/admin/settings',
+    icon: SettingsIcon,
+    title: 'Settings'
+  }
+]
 function MainListItems(props){
+  const { user } = useSelector((state) => state.login);
      return (
       <Box
       sx={{
@@ -52,26 +73,23 @@ function MainListItems(props){
       >
         <Avatar
           component={RouterLink}
-          src={user.avatar}
+          src={user ? user.profileImage : userStatic.avatar}
           style={{height: 80,width: 80, marginBottom: 15}}
-          // sx={{
-          //   cursor: 'pointer',
-          //   width: 200,
-          //   height: 200
-          // }}
+          Link
           to="/admin"
         />
         <Typography
           color="textPrimary"
           variant="h4"
         >
-          {user.name}
+          
+          {user ? user.name+' '+user.lastName : "Faissal"}
         </Typography>
         <Typography
           color="textSecondary"
           variant="body2"
         >
-          {user.jobTitle}
+          {user.description}
         </Typography>
       </Box>
       <Divider />

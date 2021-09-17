@@ -10,13 +10,15 @@ import logger from 'redux-logger';
 import { loginReducer } from './reducers/login';
 import sharedReducer from './reducers/shared';
 import registerReducer from './reducers/register';
+import usersReducer from './reducers/getUsers';
 
 
 //!REDUCER
 const reducer = combineReducers({
     login : loginReducer,
     shared : sharedReducer,
-    register : registerReducer
+    register : registerReducer,
+    users: usersReducer,
 })
 
 //!APP INITIAL STATE

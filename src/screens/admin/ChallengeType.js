@@ -2,24 +2,15 @@ import { Helmet } from 'react-helmet';
 import { Box, Container } from '@material-ui/core';
 import customers from '../../utils/mock_data/customers';
 import DashboardLayout from '../../components/layout/admin';
-import CustomerListToolbar from '../../components/users/UsersListToolbar';
-import CustomerListResults from '../../components/users/UsersListResults';
+import CustomerListToolbar from '../../components/challengeType/ChallengeTypeToolbar';
+import CustomerListResults from '../../components/challengeType/ChallengeTypeResults';
 import SuspenseComponent from '../../components/library/SuspenseComponent';
 import ScreenTransition from '../../components/library/ScreenTransition';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getUsers } from '../../redux/actions/getUsers';
 
-function UsersList()  {
-  const  dispatch = useDispatch()
-  const {users} = useSelector(state => state.users)
-  useEffect(() => {
-    dispatch(getUsers())
-  }, [])
-  return (
+const ChallengeTypeList = () => (
   <DashboardLayout>
     <Helmet>
-      <title>Users</title>
+      <title>Challenge Type</title>
     </Helmet>
     <Box
       sx={{
@@ -31,11 +22,11 @@ function UsersList()  {
       <Container maxWidth={false}>
         <CustomerListToolbar />
         <Box sx={{ pt: 3 }}>
-          <CustomerListResults customers={users} />
+          <CustomerListResults customers={customers} />
         </Box>
       </Container>
     </Box>
   </DashboardLayout>
-);}
+);
 
-export default SuspenseComponent(ScreenTransition(UsersList));
+export default SuspenseComponent(ScreenTransition(ChallengeTypeList));

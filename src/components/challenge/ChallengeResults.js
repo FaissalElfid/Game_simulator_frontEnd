@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import {
-  Avatar,
   Box,
   Card,
   Checkbox,
@@ -15,7 +14,6 @@ import {
   TableRow,
   Typography
 } from '@material-ui/core';
-import getInitials from '../../utils/getInitials';
 
 const CustomerListResults = ({ customers, ...rest }) => {
   const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
@@ -84,16 +82,13 @@ const CustomerListResults = ({ customers, ...rest }) => {
                   Name
                 </TableCell>
                 <TableCell>
-                  Email
-                </TableCell>
-                <TableCell>
                   Description
                 </TableCell>
                 <TableCell>
-                  Phone
+                  Badges
                 </TableCell>
                 <TableCell>
-                  Level
+                  Creation date
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -117,32 +112,23 @@ const CustomerListResults = ({ customers, ...rest }) => {
                         alignItems: 'center',
                         display: 'flex'
                       }}
-                    > 
-                      <Avatar
-                        src={customer.profileImage}
-                        sx={{ mr: 2 }}
-                      >
-                        {getInitials(customer.name)}
-                      </Avatar>
+                    >
                       <Typography
                         color="textPrimary"
                         variant="body1"
                       >
-                       { `${customer.name}`}
+                        {customer.name}
                       </Typography>
                     </Box>
                   </TableCell>
                   <TableCell>
-                    {customer.email}
+                    {`${customer.address.city}, ${customer.address.state}, ${customer.address.country}`}
                   </TableCell>
                   <TableCell>
-                    {customer.description}
+                    {customer.phone}
                   </TableCell>
                   <TableCell>
-                    {customer.phoneNumber}
-                  </TableCell>
-                  <TableCell>
-                  {customer.level}
+                    {moment(customer.createdAt).format('DD/MM/YYYY')}
                   </TableCell>
                 </TableRow>
               ))}

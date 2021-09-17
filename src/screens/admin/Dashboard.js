@@ -13,7 +13,7 @@ import ScreenTransition from '../../components/library/ScreenTransition';
 const Dashboard = () => (
   <DashboardLayout>
     <Helmet>
-      <title>Dashboard | Material Kit</title>
+      <title>Dashboard</title>
     </Helmet>
     <Box
       sx={{
