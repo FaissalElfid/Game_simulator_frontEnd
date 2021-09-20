@@ -23,7 +23,6 @@ import {
             if(element.profileImage){
                 element.profileImage = `${API_URL}/user/profile-image/${element.profileImage}`;
             }
-            
           });
         dispatch({ type: GET_USERS_STATE_SUCCESS, payload: response.data });
       })

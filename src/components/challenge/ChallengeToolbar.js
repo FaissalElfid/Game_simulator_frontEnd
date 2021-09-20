@@ -5,11 +5,34 @@ import {
   CardContent,
   TextField,
   InputAdornment,
-  SvgIcon
+  SvgIcon,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions
 } from '@material-ui/core';
+import React, { useEffect } from 'react';
 import { Search as SearchIcon } from 'react-feather';
+import { useDispatch, useSelector } from 'react-redux';
+import { getChallengesType } from '../../redux/actions/challenges/ChallengeType';
+import Form from './FormModal';
 
-const CustomerListToolbar = (props) => (
+function CustomerListToolbar(props){
+  const  dispatch = useDispatch()
+
+  const [openModal, setOpenModal] = React.useState(false);
+  const {challengeTypes, challengesTypeAdded} = useSelector(state => state.challengesTypes)
+  useEffect(() => {
+    dispatch(getChallengesType())
+  }, [])
+  const handleClickOpen = () => {
+    setOpenModal(true);
+  };
+
+  const handleClose = () => {
+    setOpenModal(false);
+  };
+  return (
   <Box {...props}>
     <Box
       sx={{
@@ -26,6 +49,7 @@ const CustomerListToolbar = (props) => (
       <Button
         color="primary"
         variant="contained"
+        onClick={handleClickOpen}
       >
         Add Challenge
       </Button>
@@ -55,7 +79,25 @@ const CustomerListToolbar = (props) => (
         </CardContent>
       </Card>
     </Box>
+    <Dialog
+          open={openModal}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">
+            {"Create a new new challenge"}
+          </DialogTitle>
+          <DialogContent>
+            <Form challengeTypes={challengeTypes}/>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="primary" autoFocus>
+              Close
+            </Button>
+          </DialogActions>
+        </Dialog>
   </Box>
-);
+);}
 
 export default CustomerListToolbar;

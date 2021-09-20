@@ -11,7 +11,9 @@ import { loginReducer } from './reducers/login';
 import sharedReducer from './reducers/shared';
 import registerReducer from './reducers/register';
 import usersReducer from './reducers/getUsers';
+import challengesTypeReducer from './reducers/challenges/ChallengeType';
 
+import challengesReducer from './reducers/challenges';
 
 //!REDUCER
 const reducer = combineReducers({
@@ -19,6 +21,8 @@ const reducer = combineReducers({
     shared : sharedReducer,
     register : registerReducer,
     users: usersReducer,
+    challenges: challengesReducer,
+    challengesTypes: challengesTypeReducer,
 })
 
 //!APP INITIAL STATE

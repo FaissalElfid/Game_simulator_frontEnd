@@ -5,12 +5,25 @@ import {
   CardContent,
   TextField,
   InputAdornment,
-  SvgIcon
+  SvgIcon,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Dialog
 } from '@material-ui/core';
+import React from 'react';
 import { Search as SearchIcon } from 'react-feather';
+import Form from './FormModal';
 
 function CustomerListToolbar(props) {
-  
+  const [openModal, setOpenModal] = React.useState(false);
+  const handleClickOpen = () => {
+    setOpenModal(true);
+  };
+
+  const handleClose = () => {
+    setOpenModal(false);
+  };
   return (
   <Box {...props}>
     <Box
@@ -28,6 +41,7 @@ function CustomerListToolbar(props) {
       <Button
         color="primary"
         variant="contained"
+        onClick={handleClickOpen}
       >
         Add a user
       </Button>
@@ -57,6 +71,24 @@ function CustomerListToolbar(props) {
         </CardContent>
       </Card>
     </Box>
+    <Dialog
+          open={openModal}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">
+            {"Create a new user"}
+          </DialogTitle>
+          <DialogContent>
+            <Form />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="primary" autoFocus>
+              Close
+            </Button>
+          </DialogActions>
+        </Dialog>
   </Box>
 );}
 

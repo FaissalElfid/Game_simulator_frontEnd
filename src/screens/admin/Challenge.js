@@ -1,13 +1,21 @@
 import { Helmet } from 'react-helmet';
 import { Box, Container } from '@material-ui/core';
-import customers from '../../utils/mock_data/customers';
 import DashboardLayout from '../../components/layout/admin';
 import CustomerListToolbar from '../../components/challenge/ChallengeToolbar';
 import CustomerListResults from '../../components/challenge/ChallengeResults';
 import SuspenseComponent from '../../components/library/SuspenseComponent';
 import ScreenTransition from '../../components/library/ScreenTransition';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { getChallenges } from '../../redux/actions/challenges';
 
-const ChallengeList = () => (
+function ChallengeList (){ 
+  const  dispatch = useDispatch()
+  const {challenges} = useSelector(state => state.challenges)
+  useEffect(() => {
+    dispatch(getChallenges())
+  }, [])
+  return (
   <DashboardLayout>
     <Helmet>
       <title>Challenge</title>
@@ -22,11 +30,11 @@ const ChallengeList = () => (
       <Container maxWidth={false}>
         <CustomerListToolbar />
         <Box sx={{ pt: 3 }}>
-          <CustomerListResults customers={customers} />
+          <CustomerListResults customers={challenges} />
         </Box>
       </Container>
     </Box>
   </DashboardLayout>
-);
+)};
 
 export default SuspenseComponent(ScreenTransition(ChallengeList));

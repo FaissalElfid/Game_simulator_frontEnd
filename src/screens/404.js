@@ -7,9 +7,9 @@ import {
 
 const NotFound = () => (
   <>
-    {/* <Helmet>
+    <Helmet>
       <title>404 | Material Kit</title>
-    </Helmet> */}
+    </Helmet>
     <Box
       sx={{
         backgroundColor: 'background.default',

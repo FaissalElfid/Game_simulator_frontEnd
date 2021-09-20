@@ -1,6 +1,5 @@
 import { Helmet } from 'react-helmet';
 import { Box, Container } from '@material-ui/core';
-import customers from '../../utils/mock_data/customers';
 import DashboardLayout from '../../components/layout/admin';
 import CustomerListToolbar from '../../components/users/UsersListToolbar';
 import CustomerListResults from '../../components/users/UsersListResults';
@@ -12,10 +11,12 @@ import { getUsers } from '../../redux/actions/getUsers';
 
 function UsersList()  {
   const  dispatch = useDispatch()
-  const {users} = useSelector(state => state.users)
+  const {users, loading} = useSelector(state => state.users)
+  const { registered } = useSelector((state) => state.register);
+
   useEffect(() => {
     dispatch(getUsers())
-  }, [])
+  }, [registered])
   return (
   <DashboardLayout>
     <Helmet>
@@ -31,7 +32,7 @@ function UsersList()  {
       <Container maxWidth={false}>
         <CustomerListToolbar />
         <Box sx={{ pt: 3 }}>
-          <CustomerListResults customers={users} />
+          <CustomerListResults customers={users} loading={loading} />
         </Box>
       </Container>
     </Box>
