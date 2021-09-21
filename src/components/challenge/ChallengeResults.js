@@ -13,6 +13,7 @@ import {
   TableRow,
   Typography
 } from '@material-ui/core';
+import CrudCollapse from './crudCollapse';
 
 const CustomerListResults = ({ customers, ...rest }) => {
   const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
@@ -63,6 +64,7 @@ const CustomerListResults = ({ customers, ...rest }) => {
     <Card {...rest}>
       <PerfectScrollbar>
         <Box sx={{ minWidth: 1050 }}>
+          <CrudCollapse itemSelected={selectedCustomerIds}/>
           <Table>
             <TableHead>
               <TableRow>
@@ -89,7 +91,9 @@ const CustomerListResults = ({ customers, ...rest }) => {
                 <TableCell>
                   Badges
                 </TableCell>
-                
+                <TableCell>
+                  Challenge Type
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -129,6 +133,9 @@ const CustomerListResults = ({ customers, ...rest }) => {
                   </TableCell>
                   <TableCell>
                     {customer.badges.length + customer.badgeSilver.length + customer.badgeGold.length}
+                  </TableCell>
+                  <TableCell>
+                  {customer.challengeType.title}
                   </TableCell>
                   
                 </TableRow>

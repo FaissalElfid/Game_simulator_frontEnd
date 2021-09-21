@@ -1,9 +1,13 @@
-import React from "react";
+import React from 'react'
 import { makeStyles } from "@material-ui/core/styles";
 import { Chip } from "@material-ui/core";
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Link, withRouter  } from "react-router-dom";
+import { useSelector } from 'react-redux'
 import clsx from 'clsx';
+import BackdropLoader from '../library/backdrop';
+import SuspenseComponent from '../library/SuspenseComponent';
+import ScreenTransition from '../library/ScreenTransition';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,13 +33,18 @@ const useStyles = makeStyles((theme) => ({
 
 function SportsNav(props) {
   const classes = useStyles();
-const sports = props.sports.map((sport) =>
+  const {challengeTypes, loading} = useSelector(state => state.challengesTypes)
+    const sportsData= challengeTypes.map((challengeType)=> {return challengeType.title})
+    console.log(sportsData)
+    const sports = sportsData.map((sport) =>
 <Chip label={sport} color="primary" component={Link} to={"/"+sport}  clickable className={clsx({[classes.chipActive]: sport === props.match.params.sport}, classes.chipNav)}/>
 );
   return (
     <div className={classes.root}>
-        {sports}
+        {!loading ? sports : <BackdropLoader />} 
+        {/* test */}
     </div>
   );
+
 }
-export default withRouter(SportsNav)
+export default SuspenseComponent(ScreenTransition(withRouter(SportsNav)))

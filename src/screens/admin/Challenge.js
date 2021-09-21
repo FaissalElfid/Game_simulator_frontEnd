@@ -11,10 +11,10 @@ import { getChallenges } from '../../redux/actions/challenges';
 
 function ChallengeList (){ 
   const  dispatch = useDispatch()
-  const {challenges} = useSelector(state => state.challenges)
+  const {challenges, challengeDeleted} = useSelector(state => state.challenges)
   useEffect(() => {
     dispatch(getChallenges())
-  }, [])
+  }, [challengeDeleted])
   return (
   <DashboardLayout>
     <Helmet>
