@@ -56,7 +56,7 @@ const CustomerListResults = ({ customers, ...rest }) => {
     <Card {...rest}>
       <PerfectScrollbar>
         <Box sx={{ minWidth: 1050 }}>
-          <CrudCollapse itemSelected={selectedCustomerIds}/>
+        <CrudCollapse itemSelected={selectedCustomerIds}/>
           <Table>
             <TableHead>
               <TableRow>
@@ -77,18 +77,18 @@ const CustomerListResults = ({ customers, ...rest }) => {
                   Title
                 </TableCell>
                 <TableCell>
-                  Reunlockable
+                  Level
                 </TableCell>
                 <TableCell>
-                  Badges
+                  Coins
                 </TableCell>
                 <TableCell>
-                  Challenge Type
+                  Recurrent/Reunlockable
                 </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {customers.slice(0, limit).map((customer) => (
+              {customers.length >0 && customers.slice(0, limit).map((customer) => (
                 <TableRow
                   hover
                   key={customer._id}
@@ -120,13 +120,13 @@ const CustomerListResults = ({ customers, ...rest }) => {
                     </Box>
                   </TableCell>
                   <TableCell>
-                  {customer.reunlockable ? "true" : "false"}
+                  {customer.level}
                   </TableCell>
                   <TableCell>
-                    {customer.badges.length + customer.badgeSilver.length + customer.badgeGold.length}
+                    {customer.coins}
                   </TableCell>
                   <TableCell>
-                  {customer.challengeType.title}
+                  {customer && customer.reunlockable ? <div>Re-unlockable : {customer.reunlockable}</div> : <div>Recurrent : {customer.recurrent}</div>}
                   </TableCell>
                   
                 </TableRow>

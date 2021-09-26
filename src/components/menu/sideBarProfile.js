@@ -1,12 +1,8 @@
 import React from 'react';
 import { withRouter } from "react-router-dom";
-import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
-import ListAltIcon from '@material-ui/icons/ListAlt';
 import { Link as RouterLink } from 'react-router-dom';
 import DashboardIcon from '@material-ui/icons/Dashboard';
-import SportsBaseballIcon from '@material-ui/icons/SportsBaseball';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
-import LabelIcon from '@material-ui/icons/Label';
 import SettingsIcon from '@material-ui/icons/Settings';
 import {
   Avatar,
@@ -15,7 +11,7 @@ import {
   List,
   Typography
 } from '@material-ui/core';
-import NavItem from './navItem';
+import NavItem from '../menu_admin/navItem';
 import { useSelector } from 'react-redux';
 const userStatic = {
   avatar: '/static/images/faissal.png',
@@ -24,40 +20,20 @@ const userStatic = {
 };
 const items = [
   {
-    href: '/admin',
-    icon: DashboardIcon,
-    title: 'Dashboard'
-  },
-  {
-    href: '/admin/users',
-    icon: PeopleAltIcon,
-    title: 'Users'
-  },
-  {
-    href: '/admin/challengeType',
-    icon: SportsBaseballIcon,
-    title: 'Challenges Type'
-  },
-  {
-    href: '/admin/challenge',
-    icon: ListAltIcon,
-    title: 'Challenges'
-  },
-  {
-    href: '/admin/badges',
-    icon: LabelIcon,
-    title: 'Badges'
-  }
-  ,{
-    href: '/admin/account',
+    href: '/profile/account',
     icon: AccountBoxIcon,
     title: 'My Account'
   },
   {
-    href: '/admin/settings',
+    href: '/profile/settings',
     icon: SettingsIcon,
     title: 'Settings'
-  }
+  },
+  {
+    href: '/profile',
+    icon: DashboardIcon,
+    title: 'Return to the simulator'
+  },
 ]
 function MainListItems(props){
   const { user } = useSelector((state) => state.login);
@@ -82,7 +58,7 @@ function MainListItems(props){
           src={user ? user.profileImage : userStatic.avatar}
           style={{height: 80,width: 80, marginBottom: 15}}
           Link
-          to="/admin"
+          to="/profile/account"
         />
         <Typography
           color="textPrimary"

@@ -16,10 +16,13 @@ const Login = lazy(() => import("../screens/login"));
 const Register = lazy(() => import("../screens/register"));
 const adminDashboard = lazy(() => import("../screens/admin/Dashboard"));
 const usersList = lazy(() => import("../screens/admin/Users"));
+const Badges = lazy(() => import("../screens/admin/Badges"));
 const ChallengeType = lazy(() => import("../screens/admin/ChallengeType"));
 const Challenge = lazy(() => import("../screens/admin/Challenge"));
 const Settings = lazy(() => import("../screens/admin/Settings"));
 const Account = lazy(() => import("../screens/admin/Account"));
+const ProfileAccount = lazy(() => import("../screens/profile/Account"));
+const ProfileSettings = lazy(() => import("../screens/profile/Settings"));
 const NotFoundPage = lazy(() => import("../screens/404"));
 function Routes() {
 
@@ -37,8 +40,12 @@ function Routes() {
             <ProtectedRouteAdmin path="/admin/challengeType" exact component={ChallengeType} />
             <ProtectedRouteAdmin path="/admin/challenge" exact component={Challenge} />
             <ProtectedRouteAdmin path="/admin/settings" exact component={Settings} />
+            <ProtectedRouteAdmin  path="/admin/badges" exact component={Badges} />
+
             <ProtectedRouteAdmin path="/admin/account" exact component={Account} />
             <ProtectedRouteAuth path="/home" exact component={home} />
+            <ProtectedRouteAuth path="/profile/settings" exact component={ProfileSettings} />
+            <ProtectedRouteAuth path="/profile/account" exact component={ProfileAccount} />
             <Route path="/404" component={NotFoundPage} />
             <ProtectedRouteAuth
               exact

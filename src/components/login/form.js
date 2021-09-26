@@ -17,6 +17,7 @@ import FormPassword from "../library/input/Password";
 import { registeredFalse } from "../../redux/actions/register";
 import { ADMIN_ROUTES } from "../../utils/admin_routes";
 import { getChallengesType } from "../../redux/actions/challenges/ChallengeType";
+import { getChallenges } from "../../redux/actions/challenges";
 const useStyles = makeStyles((theme) => ({
   paper: {
     display: "flex",
@@ -65,6 +66,7 @@ export default function Form() {
   };
     if(connected && !loading) {
       dispatch(getChallengesType());
+      dispatch(getChallenges());
       if(ADMIN_ROUTES.includes(url) && !isAdmin){
         history.push('/404');
       }

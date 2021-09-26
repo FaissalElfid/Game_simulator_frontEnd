@@ -33,7 +33,7 @@ const TasksProgress = (props) => (
             color="textPrimary"
             variant="h3"
           >
-            75.5%
+            1.5%
           </Typography>
         </Grid>
         <Grid item>
@@ -50,7 +50,7 @@ const TasksProgress = (props) => (
       </Grid>
       <Box sx={{ pt: 3 }}>
         <LinearProgress
-          value={75.5}
+          value={1.5}
           variant="determinate"
         />
       </Box>

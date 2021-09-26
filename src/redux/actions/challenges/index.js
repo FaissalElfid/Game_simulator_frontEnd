@@ -35,6 +35,7 @@ import {
       });
   };
   export const addChallenge = (data) => async (dispatch) => {
+    console.log(data)
     dispatch({ type: ADD_CHALLENGE_LOADING });
     await axios
       .post(
@@ -42,7 +43,7 @@ import {
         {
             title: data.title,
             description: data.description,
-            reunlockable: data.reunlockable,
+            reunlockable: data.isReunlockable,
         },
         {
           withCredentials: true,

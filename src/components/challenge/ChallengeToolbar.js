@@ -21,9 +21,10 @@ function CustomerListToolbar(props){
   const  dispatch = useDispatch()
 
   const [openModal, setOpenModal] = React.useState(false);
-  const {challengeTypes, challengesTypeAdded} = useSelector(state => state.challengesTypes)
+  const {challengeTypes} = useSelector(state => state.challengesTypes)
   useEffect(() => {
     dispatch(getChallengesType())
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   const handleClickOpen = () => {
     setOpenModal(true);

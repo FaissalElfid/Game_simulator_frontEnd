@@ -27,16 +27,13 @@ const useStyles = makeStyles((theme) => ({
 function Sport(props) {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-
   return (
     <Paper className={fixedHeightPaper}>
 
     <Container component="main">
       <CssBaseline />
       <Grid container className={classes.paper}>
-      {props.match.params.sport === 'Foot' && 
-
-        <ChallengesCarousel /> }
+        <ChallengesCarousel /> 
       </Grid>
 
     </Container>

@@ -15,6 +15,8 @@ import challengesTypeReducer from './reducers/challenges/ChallengeType';
 
 import challengesReducer from './reducers/challenges';
 
+import badgesReducer from './reducers/badges';
+
 //!REDUCER
 const reducer = combineReducers({
     login : loginReducer,
@@ -22,6 +24,7 @@ const reducer = combineReducers({
     register : registerReducer,
     users: usersReducer,
     challenges: challengesReducer,
+    badges: badgesReducer,
     challengesTypes: challengesTypeReducer,
 })
 

@@ -35,9 +35,8 @@ function SportsNav(props) {
   const classes = useStyles();
   const {challengeTypes, loading} = useSelector(state => state.challengesTypes)
     const sportsData= challengeTypes.map((challengeType)=> {return challengeType.title})
-    console.log(sportsData)
-    const sports = sportsData.map((sport) =>
-<Chip label={sport} color="primary" component={Link} to={"/"+sport}  clickable className={clsx({[classes.chipActive]: sport === props.match.params.sport}, classes.chipNav)}/>
+    const sports = sportsData.map((sport, index) =>
+<Chip label={sport} key={index} color="primary" component={Link} to={"/"+sport}  clickable className={clsx({[classes.chipActive]: sport === props.match.params.sport}, classes.chipNav)}/>
 );
   return (
     <div className={classes.root}>

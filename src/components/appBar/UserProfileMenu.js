@@ -6,6 +6,7 @@ import { Chip, CircularProgress } from "@material-ui/core";
 import FaceIcon from "@material-ui/icons/Face";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/actions/login";
+import { useHistory } from "react-router";
 
 const useStyles = makeStyles((theme) => ({
   chip: {
@@ -20,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 export default function UserProfileMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const { loading, user } = useSelector((state) => state.login);
-
+  const history = useHistory();
   const dispatch = useDispatch();
   const handleClick = (event) => {
     console.log(user.name)
@@ -51,8 +52,9 @@ export default function UserProfileMenu() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
+        <MenuItem onClick={()=>history.push('/profile/account')}>My account</MenuItem>
+        <MenuItem onClick={()=>history.push('/profile/settings')}>Settings</MenuItem>
+        
         {loading ? (
           <CircularProgress size={24} color="primary" />
         ) : (

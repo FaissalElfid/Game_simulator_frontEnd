@@ -12,8 +12,10 @@ import { getChallenges } from '../../redux/actions/challenges';
 function ChallengeList (){ 
   const  dispatch = useDispatch()
   const {challenges, challengeDeleted} = useSelector(state => state.challenges)
+  // const {badgeAdded} = useSelector(state => state.badges)
   useEffect(() => {
     dispatch(getChallenges())
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [challengeDeleted])
   return (
   <DashboardLayout>

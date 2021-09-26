@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 import { Paper } from "@material-ui/core";
  
 import ProgressChallenge from '../challenges/ProgressChallenge';
+import { useDispatch, useSelector } from "react-redux";
+import { setCurrentChallenge } from "../../redux/actions/shared";
 const useStyles = makeStyles((theme) => ({
   paper: {
     width: 300,
@@ -46,11 +48,17 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ChallengesLayout(props) {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const {url} = useSelector(state => state.shared)
+  useEffect(() => {
+    dispatch(setCurrentChallenge(props.item))
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [url])
   return (
     <Paper className={classes.main} elevation={0}>
       <Paper className={classes.challengesContainer} elevation={10}>
           <Paper className={classes.challenge}></Paper>
-        <h2 style={{}}>{props.item.name}</h2>
+        <h2 style={{}}>{props.item.title}</h2>
         <div className={classes.row}>
         <Paper className={classes.challenge}></Paper>
         <Paper className={classes.challenge}>

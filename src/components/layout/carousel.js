@@ -2,26 +2,30 @@ import React from "react";
 import Carousel from "react-material-ui-carousel";
 import { makeStyles } from "@material-ui/core/styles";
 import ChallengesLayout from "./challengesLayout";
+import { useSelector } from "react-redux";
+import { withRouter } from "react-router";
+import { Typography } from "@material-ui/core";
+import EmptyLayout from "./emptyLayout";
 
-const items = [
-  {
-    name: "Défis foot général",
-    description: "A PDF Reader specially designed for musicians.",
-  },
-  {
-    name: "Défis du winner",
-    description:
-      "My Solution on the 2019 Hash Code by Google Slideshow problem.",
-  },
-  {
-    name: "Défis dba",
-    description: "A exciting mobile game game made in the Unity Engine.",
-  },
-  {
-    name: "Social Media Défis",
-    description: "A Generic carousel UI component for React using material ui.",
-  },
-];
+// const items = [
+//   {
+//     title: "Défis foot général",
+//     description: "A PDF Reader specially designed for musicians.",
+//   },
+//   {
+//     title: "Défis du winner",
+//     description:
+//       "My Solution on the 2019 Hash Code by Google Slideshow problem.",
+//   },
+//   {
+//     title: "Défis dba",
+//     description: "A exciting mobile game game made in the Unity Engine.",
+//   },
+//   {
+//     title: "Social Media Défis",
+//     description: "A Generic carousel UI component for React using material ui.",
+//   },
+// ];
 
 const useStyles = makeStyles((theme) => ({
     secondExample: {
@@ -32,8 +36,10 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-export default function CarouselChallenges(){
+ function CarouselChallenges(props){
     const classes = useStyles();
+    const {challenges} = useSelector(state => state.challenges)
+    const specificChallenges = challenges.filter(item => item.challengeType.title === props.match.params.sport)
     return (
       <div style={{ marginTop: "5px", justifyContent:'center' }}>
         <Carousel
@@ -45,11 +51,12 @@ export default function CarouselChallenges(){
           navButtonsAlwaysVisible={true}
           navButtonsAlwaysInvisible={false}
         >
-          {items.map((item, index) => {
+          {specificChallenges.length > 0 ? specificChallenges.map((item, index) => {
             return <ChallengesLayout item={item} key={index} />;
-          })}
+          }) : <EmptyLayout />}
         </Carousel>
 
       </div>
     );
 }
+export default withRouter(CarouselChallenges)

@@ -1,54 +1,38 @@
-import {
-  Button,
-  CircularProgress,
-  Collapse,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  IconButton,
-} from "@material-ui/core";
+import { CircularProgress, Collapse, IconButton } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
-import React, { useState } from "react";
+import React from "react";
 import CloseIcon from "@material-ui/icons/Close";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import { makeStyles } from "@material-ui/styles";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteChallenge } from "../../redux/actions/challenges";
+import { deleteBadge } from "../../redux/actions/badges";
 import SuccessCollapse from "../library/successCollapse";
-import BadgesFormModal from "./BadgeModal";
 
 const useStyles = makeStyles((theme) => ({
   main: {
     width: "100%",
   },
+  collapse: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
 }));
 export default function CrudCollapse(props) {
   const [open, setOpen] = React.useState(true);
-  const dispatch = useDispatch();
-  const { challengeDeleted,challenges, loading } = useSelector(
-    (state) => state.challenges
-  );
   const classes = useStyles();
-  const [openModal, setOpenModal] = useState(false);
-  const handleClickOpen = () => {
-    setOpenModal(true);
-  };
-
-  const handleClose = () => {
-    setOpenModal(false);
-  };
-  const handleDelete = (ids) => {
-    ids.forEach((element) => {
-      dispatch(deleteChallenge(element));
-    });
+  const dispatch = useDispatch();
+  const { badgeDeleted,badges, loading } = useSelector(
+    (state) => state.badges
+  );
+  const handleDelete = (element) => {
+    dispatch(deleteBadge(badges.challengeId,element));
   };
   var { itemSelected } = props;
   return (
     <div className={classes.main}>
-      <SuccessCollapse success={challengeDeleted} />
-      <Collapse in={itemSelected.length > 1 && open}>
+      <SuccessCollapse success={badgeDeleted} />
+      <Collapse in={itemSelected.length > 0 && open}>
         <div className={classes.collapse}>
           <Alert
             severity="info"
@@ -79,6 +63,7 @@ export default function CrudCollapse(props) {
                     <DeleteIcon />
                   )}
                 </IconButton>
+
                 <IconButton
                   aria-label="close"
                   color="inherit"
@@ -91,29 +76,7 @@ export default function CrudCollapse(props) {
                 </IconButton>
               </div>
             }
-          >
-            <Button variant="outlined" onClick={handleClickOpen}>
-              Add A Badge to this Challenge
-            </Button>
-            <Dialog
-              open={openModal}
-              onClose={handleClose}
-              aria-labelledby="alert-dialog-title"
-              aria-describedby="alert-dialog-description"
-            >
-              <DialogTitle id="alert-dialog-title">
-                {"Create a new new challenge"}
-              </DialogTitle>
-              <DialogContent>
-                <BadgesFormModal itemSelected={props.itemSelected} challenges={challenges}/>
-              </DialogContent>
-              <DialogActions>
-                <Button onClick={handleClose} color="primary" autoFocus>
-                  Close
-                </Button>
-              </DialogActions>
-            </Dialog>
-          </Alert>
+          ></Alert>
         </div>
       </Collapse>
     </div>
