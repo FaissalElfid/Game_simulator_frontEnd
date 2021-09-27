@@ -5,13 +5,12 @@ import CardChallenge from '../challenges/ChallengeCard';
 import { useSelector } from 'react-redux';
 
 function CardList(props){
-  console.log(props.items)
   return (
   <div>
     {props.items &&
       props.items.map((badge) => 
       <ListItem key={badge._id}>
-        <CardChallenge title={badge.description ? badge.description : badge.title} reunlockable={badge.reunlockable} recurrent={badge.recurrent} coins={badge.coins}/> 
+        <CardChallenge _id={badge._id} image={badge.image} title={badge.description ? badge.description : badge.title} reunlockable={badge.reunlockable} recurrent={badge.recurrent} coins={badge.coins}/> 
     </ListItem>)
     }
   </div>

@@ -39,10 +39,8 @@ export default function CrudCollapse(props) {
   const handleClose = () => {
     setOpenModal(false);
   };
-  const handleDelete = (ids) => {
-    ids.forEach((element) => {
-      dispatch(deleteChallenge(element));
-    });
+  const handleDelete = (element) => {
+    dispatch(deleteChallenge(element));
   };
   var { itemSelected } = props;
   return (

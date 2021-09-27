@@ -106,13 +106,13 @@ function BadgesFormModal(props) {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <Form level="Bronze" id={props.currentChallenge._id}/>
+        <Form level="bronze" id={props.currentChallenge._id}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-      <Form level="Silver" id={props.currentChallenge._id} />
+      <Form level="silver" id={props.currentChallenge._id} />
       </TabPanel>
       <TabPanel value={value} index={2}>
-      <Form level="Gold"  id={props.currentChallenge._id}/>
+      <Form level="gold"  id={props.currentChallenge._id}/>
       </TabPanel>
     </Box>
     </div>
@@ -157,7 +157,7 @@ function BadgesReunlockableModal(props) {
       console.log(data.target.files[0])
       setFile(URL.createObjectURL(data.target.files[0]))
     }
-
+    console.log(props.level)
 
     const onSubmit = (data) => {
       data.level = props.level

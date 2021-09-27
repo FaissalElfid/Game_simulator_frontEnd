@@ -4,28 +4,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import ChallengesLayout from "./challengesLayout";
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router";
-import { Typography } from "@material-ui/core";
 import EmptyLayout from "./emptyLayout";
 
-// const items = [
-//   {
-//     title: "Défis foot général",
-//     description: "A PDF Reader specially designed for musicians.",
-//   },
-//   {
-//     title: "Défis du winner",
-//     description:
-//       "My Solution on the 2019 Hash Code by Google Slideshow problem.",
-//   },
-//   {
-//     title: "Défis dba",
-//     description: "A exciting mobile game game made in the Unity Engine.",
-//   },
-//   {
-//     title: "Social Media Défis",
-//     description: "A Generic carousel UI component for React using material ui.",
-//   },
-// ];
 
 const useStyles = makeStyles((theme) => ({
     secondExample: {

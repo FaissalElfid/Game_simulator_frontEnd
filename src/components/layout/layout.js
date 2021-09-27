@@ -8,8 +8,10 @@ const useStyles = makeStyles((theme) => ({
     appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
-    height: "100vh",
+    height: "100%",
     overflow: "auto",
+    display: "flex",
+
     backgroundColor: "#282C34",
   },
   root: {
@@ -20,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: "50px",
     color: "#fafafa",
   },
+  container:{
+    paddingTop: 72,
+  },
   copyright: {
     paddingTop: "70px",
   },
@@ -29,8 +34,9 @@ export default function MainLayout(props) {
   const classes = useStyles();
   return (
       <div className={classes.root}>
-    <Drawer />
         <main className={classes.content}>
+
+    <Drawer />
           <div className={classes.appBarSpacer} />
           <Container maxWidth="lg" className={classes.container}>
             {props.children}

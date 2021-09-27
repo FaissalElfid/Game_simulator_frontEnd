@@ -42,11 +42,11 @@ import {
       formData.append("title", data.title);
       formData.append("description", data.description);
       formData.append("pronos", data.pronos);
-      if(data.recurrent)
-      formData.append("recurrent", data.recurrent);
+      if(data.recurrent){
+      formData.append("recurrent", data.recurrent);}
       formData.append("coins", data.coins)
-      if(data.reunlockable);
-      formData.append("reunlockable", data.reunlockable);
+      if(data.reunlockable){
+      formData.append("reunlockable", data.reunlockable);}
       formData.append("level", data.level);
       formData.append("file", data.image);
       console.log(data);
@@ -105,4 +105,26 @@ import {
         });
       });
   };
-  
+  export const updateUserBadge = (userId, badgeId, counter) => async (dispatch) => {
+    dispatch({ type: ADD_BADGE_LOADING });
+    await axios
+      .post(
+        `${API_URL}/user/${userId}/${badgeId}`,
+        {counter: counter},
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        dispatch({ type: ADD_BADGE_SUCCESS, payload: response.data.message});
+      })
+      .catch((error) => {
+        dispatch({
+          type: ADD_BADGE_FAILED,
+          payload: error.response.data.message,
+        });
+      });
+  };
